@@ -22,7 +22,7 @@ ja:
       select: 選択して下さい
       sort by valid: 終了期限でソートする
       sort by priority: 優先順位でソートする
-      # First:
+      need loggedin: ログインして下さい。
     form:
       create new: 新規
       Not started: 未着手

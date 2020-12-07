@@ -1,2 +1,16 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<p class="text-success bg-success"><%= notice %></p>
+<h1><%= t('dictionary.words.login') %></h1>
+<%= form_with(scope: :session, local: true, url: sessions_path)do |f| %>
+  <%= f.hidden_field :email %>
+  <div class="form-group">
+    <%= f.label :email, t('dictionary.words.email') %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, t('dictionary.words.password') %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="form-group">
+    <%= f.submit t('dictionary.words.login') %>
+  </div>
+<% end %>

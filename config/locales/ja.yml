@@ -2,6 +2,8 @@
 ja:
   dictionary:
     words:
+      login: ログイン
+      password: パスワード
       task_name: タスク名
       details: 詳細
       created_at: 作成日時
@@ -14,12 +16,17 @@ ja:
       priority: 優先順位
       user_name: ユーザー名
       email: メールアドレス
+      logged in: ログインしました。
+      logged out: ログアウトしました。
+      login failed: ログインに失敗しました。
   layouts:
     application:
     header:
       create new: 新規作成
       create user: ユーザー登録
       index: 一覧
+      login: ログイン
+      logout: ログアウト
     footer:
   views:
     pagination:

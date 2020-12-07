@@ -12,15 +12,24 @@
     </div>
     <div id="gnavi" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <%= link_to "#{ t('.index') }", tasks_path %>
-        </li>
-        <li>
-          <%= link_to "#{ t('.create new') }", new_task_path %>
-        </li>
-        <li>
-          <%= link_to "#{ t('.create user') }", new_user_path %>
-        </li>
+        <% if logged_in? %>
+          <li>
+            <%= link_to "#{ t('.logout') }", session_path(current_user.id), method: :delete %>
+          </li>
+          <li>
+            <%= link_to "#{ t('.index') }", tasks_path %>
+          </li>
+          <li>
+            <%= link_to "#{ t('.create new') }", new_task_path %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "#{ t('.login') }", new_session_path %>
+          </li>
+          <li>
+            <%= link_to "#{ t('.create user') }", new_user_path %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
