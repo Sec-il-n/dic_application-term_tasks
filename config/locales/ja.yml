@@ -12,15 +12,18 @@ ja:
       Already started: 着手中
       done: 完了
       priority: 優先順位
+      user_name: ユーザー名
+      email: メールアドレス
   layouts:
     application:
     header:
       create new: 新規作成
+      create user: ユーザー登録
       index: 一覧
     footer:
   views:
     pagination:
-      truncate: 
+      truncate:
   activerecord:
     errors:
       messages:

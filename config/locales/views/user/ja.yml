@@ -1,0 +1,8 @@
+ja:
+  users:
+    form:
+    show:
+      # 機能しない
+      user name: ユーザー名
+      email: メールアドレス
+      password: パスワード

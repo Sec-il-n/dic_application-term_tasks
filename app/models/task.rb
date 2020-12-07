@@ -20,4 +20,5 @@ class Task < ApplicationRecord
   #   middle: 1,
   #   high: 2
   # }
+  belongs_to :user
 end

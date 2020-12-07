@@ -21,10 +21,15 @@
           <p class="text-danger bg-warning"><%= msg %></p>
         <% end %>
       <% end %>
+<%# 要りファクタリング %>
+      <% if @user && @user.errors.any? %>
+        <p class="text-danger bg-danger"><%= @user.errors.count %> 件のエラーがあります。</p>
+        <% @user.errors.full_messages.each do |msg| %>
+          <p class="text-danger bg-warning"><%= msg %></p>
+        <% end %>
+      <% end %>
       <div class="container">
-      <!-- <div class="row"> -->
         <%= yield %>
-        <%# <%= link_to '一覧', tasks_path %>
       </div>
     </div>
     <%= render 'layouts/footer' %>
