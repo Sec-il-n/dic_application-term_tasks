@@ -15,11 +15,17 @@ ja:
       done: 完了
       priority: 優先順位
       user_name: ユーザー名
+      admin: 管理者画面
+      details: 詳細
+      edit: 編集
+      delete: 削除
       email: メールアドレス
+      tasks: タスク一覧
       logged in: ログインしました。
       logged out: ログアウトしました。
       login failed: ログインに失敗しました。
       user created: ユーザーを登録しました。
+      user deleted: ユーザーを削除しました。
       cannot create user: ユーザーを作成する権限がありません。
       cannot see other details: ログインユーザの詳細のみ閲覧可能です。
   layouts:

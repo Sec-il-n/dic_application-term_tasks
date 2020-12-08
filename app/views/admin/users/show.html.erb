@@ -1,0 +1,10 @@
+<p class="text-success bg-success"><%= notice %></p>
+<h3><%= t('dictionary.words.user_name') %></h3>
+<%= @user.user_name %>
+<h3><%= t('dictionary.words.email') %></h3>
+<%= @user.email %>
+
+<h3><%= t('dictionary.words.tasks') %></h3>
+<% @tasks.each do |task| %>
+  <%= task.task_name %><br>
+<% end %>

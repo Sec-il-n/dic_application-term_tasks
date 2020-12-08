@@ -6,5 +6,5 @@ class User < ApplicationRecord
     # validates :password_confirmation
   end
   has_secure_password
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 end
