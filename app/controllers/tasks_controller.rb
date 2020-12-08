@@ -14,27 +14,33 @@ class TasksController < ApplicationController
     end
   end
   def index
-      @tasks = Task.page(params[:page]).per(PAR)
-      @tasks = @tasks.recent
+      # @tasks = @tasks.recent
 
-    if params[:order_valid].present?
-      @tasks = Task.page(params[:page]).per(PAR)
-      @tasks = @tasks.order_valid
+      # @tasks = Task.page(params[:page]).per(PAR).recent.tasks_of_user(current_user.id)
+      # ✖︎効かない　@tasks =　@tasks.tasks_of_user(current_user.id)
+    if logged_in?
+      @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
 
-    elsif params[:status].present? && params[:task_name].present?
-      @tasks = @tasks.search_status(params[:status]).search_name_like(params[:task_name])
+      if params[:order_valid].present?
+        @tasks = @tasks.order_valid
 
-    elsif params[:task_name].present?
-      @tasks = @tasks.search_name_like(params[:task_name])
+      elsif params[:status].present? && params[:task_name].present?
+        @tasks = @tasks.search_status(params[:status]).search_name_like(params[:task_name])
 
-    elsif params[:status].present?
-      @tasks = @tasks.search_status(params[:status])
+      elsif params[:task_name].present?
+        @tasks = @tasks.search_name_like(params[:task_name])
 
-    elsif params[:order_priority].present?
-      @tasks = Task.page(params[:page]).per(PAR)
-      @tasks = @tasks.order_priority
+      elsif params[:status].present?
+        @tasks = @tasks.search_status(params[:status])
+
+      elsif params[:order_priority].present?
+        @tasks = @tasks.order_priority
+
+      else
+        @tasks = @tasks.recent
+
+      end
     end
-
   end
   def show
 

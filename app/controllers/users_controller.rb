@@ -2,7 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user
   skip_before_action :authenticate_user
   def new
-    @user = User.new
+    # @user = User.new
+    if logged_in?
+      redirect_to tasks_path, notice: t('dictionary.words.cannot create user')
+    else
+      @user = User.new
+    end
   end
   def create
     @user = User.create(user_params)
@@ -16,7 +21,9 @@ class UsersController < ApplicationController
     end
   end
   def show
-
+    if current_user.id != params[:id]#
+      redirect_to tasks_path, notice: t('dictionary.words.cannot see other details')
+    end
   end
   def edit
 

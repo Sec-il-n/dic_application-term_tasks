@@ -20,6 +20,8 @@ ja:
       logged out: ログアウトしました。
       login failed: ログインに失敗しました。
       user created: ユーザーを登録しました。
+      cannot create user: ユーザーを作成する権限がありません。
+      cannot see other details: ログインユーザの詳細のみ閲覧可能です。
   layouts:
     application:
     header:
