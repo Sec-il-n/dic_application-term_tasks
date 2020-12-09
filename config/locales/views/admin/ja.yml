@@ -1,0 +1,18 @@
+ja:
+  admin:
+    users:
+      index:
+        need loggedin: 管理者ログインして下さい。
+        added role: 管理者権限を付与しました。
+        deleted role: 管理者権限を削除しました。
+        edited user: ユーザー情報を更新しました。
+        edit failed: 更新に失敗しました。
+        role: ロール
+      form:
+        add role: 付与
+        off role: 無し
+        back to index: 管理画面へ
+        create user: 新規ユーザー登録
+        user add failed: 新規ユーザー登録に失敗しました。
+      show:
+        user add successed: 新規ユーザーを登録しました。

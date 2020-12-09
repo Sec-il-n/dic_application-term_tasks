@@ -1,12 +1,9 @@
-<%= form_with(model: user, local: true) do |f| %>
-  <div class="form-group">
-
-  </div>
+<%# <%= form_with(model: user, local: true, url: choose_path_admin) do |f| %>
+<%= form_with(model:[:admin, user], local: true) do |f| %>
   <div class="form-group">
     <%= f.hidden_field :user_name %>
     <%= f.hidden_field :email %>
-    <%# <%= f.hidden_field :password %>
-    <%# <%= f.hidden_field :password_confirmation %>
+    <%= f.hidden_field :admin %>
   </div>
   <div class="form-group">
     <%= f.label :user_name %>
@@ -25,6 +22,15 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="form-group">
+    <%= f.label :admin %>
+    <%= f.radio_button :admin, :true %>
+    <%= f.label :admin, t('admin.users.form.add role'), { value: :true } %>
+    <%# <%= f.label :admin, t('admin.users.add role'), { value: :true, style: "display: inline-block;" } %>
+    <%= f.radio_button :admin, :false, checked: true %>
+    <%= f.label :admin, t('admin.users.form.off role'), { value: :false } %>
+  </div>
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>
+<%= link_to t('admin.users.form.back to index'), admin_users_path %>

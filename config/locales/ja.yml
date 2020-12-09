@@ -28,6 +28,7 @@ ja:
       user deleted: ユーザーを削除しました。
       cannot create user: ユーザーを作成する権限がありません。
       cannot see other details: ログインユーザの詳細のみ閲覧可能です。
+      admin needs minimum one: 管理者は一人以上必要です。
   layouts:
     application:
     header:
@@ -36,6 +37,7 @@ ja:
       index: 一覧
       login: ログイン
       logout: ログアウト
+      admin: 管理者画面
     footer:
   views:
     pagination:

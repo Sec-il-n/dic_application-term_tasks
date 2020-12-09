@@ -5,18 +5,20 @@
     <tr>
       <th></th>
       <th></th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <% @users.each do|user| %>
+    <!-- each doのタグを外に出す。 -->
+    <% @users.each do|user| %>
+      <tr>
         <td><%= user.user_name %>&nbsp;</td>
         <td><%= user.tasks.count %></td>
-        <td><%= link_to t('dictionary.words.details'), admin_user_path(user.id), class: 'btn btn-worning button' %></td>
-        <td><%= link_to t('dictionary.words.edit'), edit_admin_user_path(user.id), class: 'btn btn-worning button' %></td>
-        <td><%= link_to t('dictionary.words.delete'), admin_user_path(user.id), method: :delete, class: 'btn btn-worning button' %></td>
-      <% end %>
-    </tr>
+        <td><%= link_to t('dictionary.words.details'), admin_user_path(user.id), class: 'btn btn-info btn-sm button' %></td>
+        <td><%= link_to t('dictionary.words.edit'), edit_admin_user_path(user.id), class: 'btn btn-warning btn-sm button' %></td>
+        <td><%= link_to t('dictionary.words.delete'), admin_user_path(user.id), method: :delete, class: 'btn btn-danger btn-sm button' %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
+<%= link_to t('admin.users.form.create user'), new_admin_user_path %>

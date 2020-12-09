@@ -6,5 +6,18 @@ class User < ApplicationRecord
     # validates :password_confirmation
   end
   has_secure_password
+  before_destroy :cannot_destroy_last_admin
   has_many :tasks, dependent: :destroy
+
+  # scope :group_admin, -> { where(admin: true) }
+
+  private
+  def admin_exists?
+    User.where(admin: true).count == 1
+    # User.find_by(admin: true).count == 1
+    # User.find_by(admin: true).present?
+  end
+  def cannot_destroy_last_admin
+    throw(:abort) if admin_exists?
+  end
 end
