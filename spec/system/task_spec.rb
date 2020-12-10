@@ -65,7 +65,6 @@ RSpec.describe Task, type: :system do
           elements = all(:xpath, '//*[@id="status_shown"]')
           # elements = all(:xpath, '/html/body/table/tbody/tr/td[5]')
           # //*[@id="status_shown"]
-          # binding.pry
           elements.count.times do |n|
             expect(elements[n].text).to eq "#{I18n.t('.dictionary.words.Already started')}"
             # expect(elements[n].text).to have_content("#{I18n.t('.dictionary.words.Already started')}")
@@ -90,17 +89,18 @@ RSpec.describe Task, type: :system do
     end
     describe '並べ替え機能'do
       context '終了期限のリンクをクリックした場合'do
-        let(:elements) { all(:xpath, '//*[@id="valid_shown"]') }
+        let(:elements_v) { all(:xpath, '//*[@id="valid_shown"]') }
+        # let(:elements) { all(:xpath, '//*[@id="valid_shown"]') }
         let(:valid_orderd) { Task.order_valid.map { |t| t.valid_date } }
         it '終了期限の昇順に表示される'do
           tasks = FactoryBot.create_list(:task_3, 20)
           visit  tasks_path
           click_link "#{I18n.t('.dictionary.words.valid_date')}"
-          # find_link("#{I18n.t('.dictionary.words.valid_date')}").click
-          elements.count.times do |n|
-            # tasks = tasks.order( valid_date: :ASC )
-            # NameError: undefined local variable or method `tasks_orderd'
-            expect(elements[n].text).to eq valid_orderd[n].strftime('%Y/%m/%d')
+
+          elements_v.count.times do |v|
+          # elements.count.times do |n|
+            expect(elements_v[v].text).to eq valid_orderd[v].strftime('%Y/%m/%d')
+            # expect(elements[n].text).to eq valid_orderd[n].strftime('%Y/%m/%d')
           end
         end
       end
