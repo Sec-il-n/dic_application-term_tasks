@@ -4,6 +4,9 @@ ja:
     words:
       login: ログイン
       password: パスワード
+      password_confirmation: パスワード（確認）
+      submit: 登録する
+      register: 更新する
       task_name: タスク名
       details: 詳細
       created_at: 作成日時
@@ -19,7 +22,9 @@ ja:
       details: 詳細
       edit: 編集
       delete: 削除
+      user_name: ユーザー名
       email: メールアドレス
+      password: パスワード
       tasks: タスク一覧
       logged in: ログインしました。
       logged out: ログアウトしました。

@@ -5,8 +5,9 @@ ja:
         need loggedin: 管理者ログインして下さい。
         added role: 管理者権限を付与しました。
         deleted role: 管理者権限を削除しました。
-        edited user: ユーザー情報を更新しました。
+        editted user: ユーザー情報を更新しました。
         edit failed: 更新に失敗しました。
+        user deleted: ユーザーを削除しました。
         role: ロール
       form:
         add role: 付与

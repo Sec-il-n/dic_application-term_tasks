@@ -2,15 +2,17 @@ class UsersController < ApplicationController
   before_action :set_user
   skip_before_action :authenticate_user
   def new
-    # @user = User.new
+    @user = User.new
     if logged_in?
       redirect_to tasks_path, notice: t('dictionary.words.cannot create user')
-    else
-      @user = User.new
+    # else
+    #   @user = User.new
     end
   end
   def create
-    @user = User.create(user_params)
+    # binding.pry
+    @user = User.new(user_params)
+    # @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
       # 出ない
@@ -21,7 +23,8 @@ class UsersController < ApplicationController
     end
   end
   def show
-    if current_user.id != params[:id]#
+    # binding.pry
+    if current_user.id != params[:id].to_i
       redirect_to tasks_path, notice: t('dictionary.words.cannot see other details')
     end
   end
@@ -29,9 +32,10 @@ class UsersController < ApplicationController
 
   end
   def update
-    # @user = User.update(user_params)
+    # ？？要件なし
     if @user.update(user_params)
-      redirect_to(tasks_path, notice: 'ユーザー情報を編集しました。')
+      redirect_to(tasks_path, notice: t('tasks.index.editted'))
+      # redirect_to(tasks_path, notice: 'ユーザー情報を編集しました。')
     else
       render :edit
     end

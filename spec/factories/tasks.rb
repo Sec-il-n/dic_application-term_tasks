@@ -29,7 +29,6 @@ FactoryBot.define do
     task_name { generate :task_name_sequence }
     details { 'テスト_詳細3' }
     created_at { "#{5.days.ago}" }
-    # ✖︎　created_at { '2020-11-29' }
     valid_date { "#{Time.current.since(10.days)}"  }
     # valid_date { Time.current += 10 }
   end
@@ -48,4 +47,11 @@ FactoryBot.define do
     status { "#{I18n.t('.dictionary.words.Not started')}" }
     valid_date { '002020-12-18'  }
   end
+  # factory :task_7, class: Task do
+  #   task_name { generate :task_name_sequence }
+  #   details { 'テスト_詳細3' }
+  #   created_at { "#{5.days.ago}" }
+  #   valid_date { "#{Time.current.since(10.days)}"  }
+  #   user_id { 1 }
+  # end
 end

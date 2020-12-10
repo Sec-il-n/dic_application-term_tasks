@@ -23,6 +23,7 @@ ja:
       sort by valid: 終了期限でソートする
       sort by priority: 優先順位でソートする
       need loggedin: ログインして下さい。
+      editted: ユーザー情報を編集しました。
     form:
       create new: 新規
       Not started: 未着手

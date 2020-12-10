@@ -27,14 +27,15 @@ class Admin::UsersController < ApplicationController
     # binding.pry
       if @user.update(params_admin_user)
 
-        redirect_to admin_users_path, notice: t('admin.users.index.edited user')
+        redirect_to admin_users_path, notice: t('admin.users.index.editted user')
       else
         render 'edit'
       end
   end
   def destroy
     if @user.destroy
-      redirect_to admin_users_path, notice: t('dictionary.words.user deleted')
+      redirect_to admin_users_path, notice: t('admin.users.index.user deleted')
+      # redirect_to admin_users_path, notice: t('dictionary.words.user deleted')
     else
       flash[:notice] = t('dictionary.words.admin needs minimum one')
       # flash[:notice] = t('dictionary.words.admin needs minimum one')
