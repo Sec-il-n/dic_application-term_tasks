@@ -24,9 +24,11 @@
 .byebug_history
 
 .env
-#.DS_Store
+.DS_Store
 /*/.DS_Store
 /vendor/bundle
+/node_modules
+
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

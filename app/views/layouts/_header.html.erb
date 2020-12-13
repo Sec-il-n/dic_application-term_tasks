@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <!-- 音声メニュー -->
+        <span class="sr-only">TaskManager</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'TaskManager', tasks_path, class: 'navbar-brand' %>
+    </div>
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "#{ t('.index') }", tasks_path %>
+        </li>
+        <li>
+          <%= link_to "#{ t('.create new') }", new_task_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

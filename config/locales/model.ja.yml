@@ -7,6 +7,11 @@ ja:
         task_name: タスク名
         details: 詳細
         created_at: 作成日時
+        valid_date: 終了期限
+        status: ステータス
+        priority: 優先順位
+# ja:
+#   activerecord:
 #     attributes:
 #       property:
 #         name: 物件名

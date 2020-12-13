@@ -7,18 +7,26 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- FontAwesome -->
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <!-- 追記 -->
+    <meta name="viewport" content="width=device-width">
   </head>
-
   <body>
-    <%# 検証 前回まで、パーシャルに記載　+if @taskでこちらへ移動 %>
-    <%= notice %>
-    <% if @task && @task.errors.any? %>
-      <p><%= @task.errors.count %> 件のエラーがあります。</p>
-      <% @task.errors.full_messages.each do |msg| %>
-        <%= msg %><br>
+    <%= render 'layouts/header' %>
+    <div class="container-fluid">
+      <% if @task && @task.errors.any? %>
+        <p class="text-danger bg-danger"><%= @task.errors.count %> 件のエラーがあります。</p>
+        <% @task.errors.full_messages.each do |msg| %>
+          <p class="text-danger bg-warning"><%= msg %></p>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= yield %>
-    <%= link_to '一覧', tasks_path %>
+      <div class="container">
+      <!-- <div class="row"> -->
+        <%= yield %>
+        <%# <%= link_to '一覧', tasks_path %>
+      </div>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

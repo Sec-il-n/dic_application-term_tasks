@@ -9,15 +9,13 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'rails-i18n', '~> 5.1'
+gem 'kaminari'
+gem 'bootstrap-sass'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
@@ -28,6 +26,7 @@ group :development, :test do
   gem 'faker'
   gem 'launchy'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-nav'
   gem 'pry-rails'
 end
 

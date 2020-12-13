@@ -1,5 +1,26 @@
 ---
 ja:
+  dictionary:
+    words:
+      task_name: タスク名
+      details: 詳細
+      created_at: 作成日時
+      valid_date: 終了期限
+      status: ステータス
+      search: 検索
+      Not started: 未着手
+      Already started: 着手中
+      done: 完了
+      priority: 優先順位
+  layouts:
+    application:
+    header:
+      create new: 新規作成
+      index: 一覧
+    footer:
+  views:
+    pagination:
+      truncate: 
   activerecord:
     errors:
       messages:
@@ -203,5 +224,6 @@ ja:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
+      # long_2: "%Y年%m月%d日(%a) %H時%M分"
       short: "%m/%d %H:%M"
     pm: 午後

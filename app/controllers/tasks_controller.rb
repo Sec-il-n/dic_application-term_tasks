@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  PAR = 10
   before_action :set_task, only:[:show, :edit, :update, :destroy]
   def new
     @task = Task.new
@@ -13,7 +14,27 @@ class TasksController < ApplicationController
     end
   end
   def index
-    @tasks = Task.order(created_at: :DESC)
+      @tasks = Task.page(params[:page]).per(PAR)
+      @tasks = @tasks.recent
+
+    if params[:order_valid].present?
+      @tasks = Task.page(params[:page]).per(PAR)
+      @tasks = @tasks.order_valid
+
+    elsif params[:status].present? && params[:task_name].present?
+      @tasks = @tasks.search_status(params[:status]).search_name_like(params[:task_name])
+
+    elsif params[:task_name].present?
+      @tasks = @tasks.search_name_like(params[:task_name])
+
+    elsif params[:status].present?
+      @tasks = @tasks.search_status(params[:status])
+
+    elsif params[:order_priority].present?
+      @tasks = Task.page(params[:page]).per(PAR)
+      @tasks = @tasks.order_priority
+    end
+
   end
   def show
 
@@ -42,6 +63,9 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
   end
   def task_params
-    params.require(:task).permit(:task_name, :details)
+    params.require(:task).permit(:task_name, :details, :valid_date, :status)
   end
+  # def search_params
+  #   params.fetch(:search, {}).permit(:task_name, :status)
+  # end
 end
