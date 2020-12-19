@@ -51,8 +51,8 @@
           <td id="valid_shown"><%= l task.valid_date %></td>
           <td id="status_shown"><%= task.status %></td>
           <td id="priority_shown"><%= task.priority %></td>
-          <td><%= link_to t('.show'), task_path(task.id), class: 'btn btn-info button' %></td>
-          <td><%= link_to t('.edit'), edit_task_path(task.id), class: 'btn btn-warning button' %></td>
+          <td><%= link_to t('.show'), task_path(task.id), class: 'btn btn-info button link_shown' %></td>
+          <td><%= link_to t('.edit'), edit_task_path(task.id), class: 'btn btn-warning button link_edit' %></td>
           <td><%= link_to t('.delete'), task_path(task.id), method: :delete, class: 'btn btn-danger button' %></td>
       </tr>
       <% end %>

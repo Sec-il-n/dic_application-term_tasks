@@ -67,6 +67,7 @@ class TasksController < ApplicationController
   end
   def update
     if @task.update(task_params)
+      # redirect_to tasks_path, notice: "#{t('.tasks.update.tasks.index.task edited')}"
       redirect_to tasks_path, notice: %(タスクを編集しました。)
     else
       flash.now[:danger] = %(タスクの編集に失敗しました。)
