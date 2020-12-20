@@ -15,7 +15,8 @@ class TasksController < ApplicationController
   end
   def index
     if logged_in?
-      @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
+      @tasks = current_user.tasks.page(params[:page]).per(PAR)
+      # @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
 
       if params[:order_valid].present?
         @tasks = @tasks.order_valid
@@ -65,6 +66,6 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
   end
   def task_params
-    params.require(:task).permit(:task_name, :details, :valid_date, :status)
+    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority)
   end
 end
