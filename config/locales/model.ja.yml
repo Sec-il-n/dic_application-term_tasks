@@ -17,20 +17,3 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         admin: 管理者権限
-# ja:
-#   activerecord:
-#     attributes:
-#       property:
-#         name: 物件名
-#         price: 賃料
-#         address: 住所
-#         age: 築年数
-#         note: 備考
-#       property/stations:
-#         line: 路線名
-#         station_name: 駅名
-#         minute: 徒歩分数
-#       station:
-#         line: 路線名
-#         station_name: 駅名
-#         minute: 徒歩分数

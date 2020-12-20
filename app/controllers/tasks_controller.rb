@@ -14,10 +14,6 @@ class TasksController < ApplicationController
     end
   end
   def index
-      # @tasks = @tasks.recent
-
-      # @tasks = Task.page(params[:page]).per(PAR).recent.tasks_of_user(current_user.id)
-      # ✖︎効かない　@tasks =　@tasks.tasks_of_user(current_user.id)
     if logged_in?
       @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
 
@@ -71,7 +67,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:task_name, :details, :valid_date, :status)
   end
-  # def search_params
-  #   params.fetch(:search, {}).permit(:task_name, :status)
-  # end
 end

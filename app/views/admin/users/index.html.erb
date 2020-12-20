@@ -1,25 +1,33 @@
 <p class="text-success bg-success"><%= notice %></p>
-<h1><%= t('dictionary.words.admin') %></h1>
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- each doのタグを外に出す。 -->
-    <% @users.each do|user| %>
+<p class="text-danger bg-danger"><%= danger %></p>
+<h1><%= t('.title') %></h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= user.user_name %>&nbsp;</td>
-        <td><%= user.tasks.count %></td>
-        <td id="admin_show">
-          <%= link_to t('dictionary.words.details'), admin_user_path(user.id), class: 'btn btn-info btn-sm button admin_show' %></td>
-        <td id="admin_edit"><%= link_to t('dictionary.words.edit'), edit_admin_user_path(user.id), class: 'btn btn-warning btn-sm button' %></td>
-        <td id="admin_delete"><%= link_to t('dictionary.words.delete'), admin_user_path(user.id), method: :delete, class: 'btn btn-danger btn-sm button' %></td>
+        <th><%= t('.user name') %></th>
+        <th><%= t('.tasks count') %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th colspan="5"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <!-- each doのタグを外に出す。 -->
+      <% @users.each do|user| %>
+        <tr>
+          <td><%= user.user_name %>&nbsp;</td>
+          <td><%= user.tasks.count %></td>
+          <td id="admin_show">
+            <%= link_to t('dictionary.words.details'), admin_user_path(user.id), class: 'btn btn-info btn-sm button admin_show' %></td>
+          <td id="admin_edit"><%= link_to t('dictionary.words.edit'), edit_admin_user_path(user.id), class: 'btn btn-warning btn-sm button' %></td>
+          <td id="admin_delete"><%= link_to t('dictionary.words.delete'), admin_user_path(user.id), method: :delete, class: 'btn btn-danger btn-sm button' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%= link_to t('admin.users.form.create user'), new_admin_user_path %>
