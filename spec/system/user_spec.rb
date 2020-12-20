@@ -17,25 +17,17 @@ RSpec.describe User, type: :system do
       it'ログイン画面に遷移する'do
         visit tasks_path
         expect(page).to have_content("#{I18n.t('.tasks.index.need loggedin')}")
-        expect(find(:xpath, '/html/body/div/div/h1')).to have_content("#{I18n.t('.dictionary.words.login')}")
+        expect(page).to have_content("#{I18n.t('.dictionary.words.login')}")
       end
     end
   end
-  # ✖︎admin
   describe'セッション管理機能'do
     it 'ログインできる'do
-      # user = FactoryBot.create(:user)
-      # visit new_session_path
-      #切り出し
-      # fill_in "#{I18n.t('.dictionary.words.email')}", with: user.email
-      # fill_in "#{I18n.t('.dictionary.words.password')}", with: user.password
-      # click_button "#{I18n.t('.dictionary.words.login')}"
       login_as_user
       expect(page).to have_content("#{I18n.t('.dictionary.words.logged in')}")
     end
     it '自分の詳細画面に飛べる。'do
       user = FactoryBot.create(:user)
-      # login_as_user(user)
       visit new_session_path
       fill_in "#{I18n.t('.dictionary.words.email')}", with: user.email
       fill_in "#{I18n.t('.dictionary.words.password')}", with: user.password
@@ -54,6 +46,7 @@ RSpec.describe User, type: :system do
         fill_in "#{I18n.t('.dictionary.words.password')}", with: user_2.password
         click_button "#{I18n.t('.dictionary.words.login')}"
         visit user_path(user_1.id)
+
         expect(find(:xpath, '/html/body/div/div/h1')).to have_content("#{I18n.t('.tasks.index.title')}")
         expect(page).to have_content("#{I18n.t('dictionary.words.cannot see other details')}")
       end
@@ -64,7 +57,7 @@ RSpec.describe User, type: :system do
         fill_in "#{I18n.t('.dictionary.words.password')}", with: user.password
         click_button "#{I18n.t('.dictionary.words.login')}"
         click_on "#{I18n.t('.layouts.header.logout')}"
-        expect(find(:xpath, '/html/body/div/div/h1')).to have_content("#{I18n.t('.dictionary.words.login')}")
+
         expect(page).to have_content("#{I18n.t('.dictionary.words.logged out')}")
       end
     end

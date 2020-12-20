@@ -2,6 +2,9 @@ ja:
   admin:
     users:
       index:
+        title: ユーザー 一覧
+        user name: ユーザー名
+        tasks count: タスク数
         need loggedin: 管理者ログインして下さい。
         added role: 管理者権限を付与しました。
         deleted role: 管理者権限を削除しました。

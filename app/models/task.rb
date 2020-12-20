@@ -16,10 +16,5 @@ class Task < ApplicationRecord
   scope :order_priority, -> { order(priority: :DESC ) }
   scope :tasks_of_user, -> (user_id) { where(user_id: user_id) }
   enum priority:['低' ,'中' ,'高']
-  # enum priority:{
-  #   low: 0,
-  #   middle: 1,
-  #   high: 2
-  # }
   belongs_to :user
 end

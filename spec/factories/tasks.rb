@@ -39,13 +39,13 @@ FactoryBot.define do
     task_name { 'タスク' }
     details { 'テスト_詳細' }
     status { "#{["未着手", "着手中", "完了"].sample}" }
-    valid_date { '002020-12-18'  }
+    valid_date { '002022-12-18'  }
   end
   factory :task_6, class: Task do
     task_name { 'タスク234' }
     details { 'テスト_詳細' }
     status { "#{I18n.t('.dictionary.words.Not started')}" }
-    valid_date { '002020-12-18'  }
+    valid_date { '002022-12-18'  }
   end
   # factory :task_7, class: Task do
   #   task_name { generate :task_name_sequence }
