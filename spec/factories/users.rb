@@ -4,7 +4,8 @@ FactoryBot.define do
     email { "MyString@hoge.com" }
     password { "MyString" }
     password_confirmation { "MyString" }
-
+# 追加
+# step4 login_as_user の　userを別名にする。（labelがuserしか使えない為（?））
     admin { false }
 
     # # after(:build) do |user|#stack level too deep
@@ -16,6 +17,7 @@ FactoryBot.define do
       # user.tasks << create_list(:task_7, 5, user_id: user.id)
     end
   end
+# user_1を追加<-step4
   factory :user_2, class: User do
     user_name { "MyString" }
     email { "MyString2@hoge.com" }
@@ -23,7 +25,3 @@ FactoryBot.define do
     password_confirmation { "MyString" }
   end
 end
-# trait association先　factory内で連鎖して呼び出す場合、association先の有無で分岐(呼ぶ呼ばない)できる。
-    # trait :labels do
-    #
-    # end

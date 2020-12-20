@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'active_support/time'
 require 'date'
-# step3
 RSpec.describe Task, type: :system do
   describe 'タスク管理機能' do
     context 'タスクを新規作成したとき' do
@@ -12,8 +11,8 @@ RSpec.describe Task, type: :system do
         visit current_path
         fill_in 'タスク名', with: 'task_name'
         fill_in '詳細', with: 'task_details'
-        fill_in '終了期限', with: '002020-12-18'#ずれ込まないよう'00'でうめる
-        # step3で修正
+        fill_in '終了期限', with: '002020-12-18'
+        
         find('#task_status').find(:xpath, 'option[3]').select_option
         click_button '登録する'
         expect(page).to have_content('task_name')

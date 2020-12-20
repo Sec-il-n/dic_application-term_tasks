@@ -67,10 +67,16 @@ describe 'ラベル管理機能'do
     fill_in '終了期限', with: '002022-12-18'
     find('#task_status').find(:xpath, 'option[3]').select_option
 
+    # check('label_1')
+    # check('label_2')
+    # check('label_3')
     check('label_4')
     check('label_5')
     check('label_6')
     click_on('登録する')
+    # expect(page).to have_content('label_1')
+    # expect(page).to have_content('label_2')
+    # expect(page).to have_content('label_3')
     expect(page).to have_content('label_4')
     expect(page).to have_content('label_5')
     expect(page).to have_content('label_6')
@@ -86,11 +92,11 @@ describe 'ラベル管理機能'do
       first('.link_shown').click
       #userがloginで呼び出されるごとに生成され、個数は定義通りだが
       # sequenceが連番
-      expect(page).to have_content('label_16')
+      # expect(page).to have_content('label_16')
       # expect(page).to have_content('label_13')
       # expect(page).to have_content('label_10')
       # expect(page).to have_content('label_7')
-      # expect(page).to have_content('label_1')
+      expect(page).to have_content('label_1')
     end
   end
   describe 'ラベル検索機能'do
@@ -106,16 +112,6 @@ describe 'ラベル管理機能'do
         click_on('検索')
         first('.link_shown').click
         expect(find('#labels').text).to eq names[0]
-
-        # contoroller
-        # names.each do |name|
-        #   # elm_text = find('#label_id').find(:xpath, 'option[1]').text
-        #   find('#label_id').find(:xpath, 'option[1]').select_option
-        #   click_on('検索')
-        #   binding.pry
-        #   # user。tasks.each do |task| task.managers.label_id ==
-        #   #label_13~15
-        # end
       end
     end
   end

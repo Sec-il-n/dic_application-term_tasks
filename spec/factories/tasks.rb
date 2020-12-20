@@ -61,12 +61,9 @@ FactoryBot.define do
     # バリデーションに失敗しました: メールアドレスはすでに存在します
     # association :user, strategy: :build#,admin = true
     user { label.user }
-    # user { label.user }
     # user消すと　→Userを入力してください
-    # association :user, factory: :user_2
-    # 中間テーブル作成
-    # trait アソシエーション先を作るか作らないか切り替え可能
 
+    # 中間テーブル作成
     # task  undefined local variable or method
     # ActiveRecord::AssociationTypeMismatch:
       # Label(#70350793543320) expected, got #<Task id: ...priority: "高", user_id: nil> which is an instance of Task(#70350769869060)
