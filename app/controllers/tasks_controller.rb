@@ -66,6 +66,6 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
   end
   def task_params
-    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority)
+    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority).merge(user_id: current_user.id)
   end
 end

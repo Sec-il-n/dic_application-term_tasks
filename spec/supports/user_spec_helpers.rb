@@ -7,11 +7,10 @@ module UserSpecHelpers
       fill_in "#{I18n.t('.dictionary.words.password')}", with: user.password
       click_button "#{I18n.t('.dictionary.words.login')}"
   end
-  # インスタンス　引数　✖︎？
-  # def login_as_user(user)
-  #     visit new_session_path
-  #     fill_in "#{I18n.t('.dictionary.words.email')}", with: user.email
-  #     fill_in "#{I18n.t('.dictionary.words.password')}", with: user.password
-  #     click_button "#{I18n.t('.dictionary.words.login')}"
-  # end
+  def login_as_user_with_association(user)
+      visit new_session_path
+      fill_in "#{I18n.t('.dictionary.words.email')}", with: user.email
+      fill_in "#{I18n.t('.dictionary.words.password')}", with: user.password
+      click_button "#{I18n.t('.dictionary.words.login')}"
+  end
 end
