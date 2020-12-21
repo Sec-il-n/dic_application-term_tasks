@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  resources :sessions, only:[:new, :create, :destroy]
+  resources :sessions, only:[:new, :create, :destroy, :index]
   # resources :managers, only:[:index, :create, :destroy]
   namespace :admin do
     resources :users

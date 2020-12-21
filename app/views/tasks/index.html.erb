@@ -1,4 +1,9 @@
+<% if warning.present? %>
+  <p class="text-warning bg-warning"><%= warning %></p><br>
+  <%= link_to t('.valid index'), sessions_path %>
+<% end %>
 <p class="text-success bg-success"><%= notice %></p>
+
 <h1><%= t('.title') %></h1>
 <div class="row">
 <!-- <div class="search_form"> -->

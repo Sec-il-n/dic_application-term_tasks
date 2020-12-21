@@ -7,13 +7,8 @@ class TasksController < ApplicationController
     @task = Task.new
     # 追記 多対多で必要
     @task.managers.build
-    # .times.map{  必要　「現在のラベル数」buildしてblankは保存しない　　厳密：「受け取ったパラの回数」　　ただし「Label」
-    # @task.managers.label.build
-    # @task.managers.labels.build
-    # @task.labels.build
   end
   def create
-    # ✖︎　@task = Task.create(task_params)
     @task = Task.new(task_params)
     if @task.save
       redirect_to task_path(@task.id),notice: %(タスクを登録しました。)
@@ -23,14 +18,10 @@ class TasksController < ApplicationController
     end
   end
   def index
-    # タグ検索　
-    # ＠user = current_user   view: @user.labels=> selectのLabel.allへ？？
-      # @tasks = @tasks.recent
-      # @tasks = Task.page(params[:page]).per(PAR).recent.tasks_of_user(current_user.id)
-      # ✖︎効かない　@tasks =　@tasks.tasks_of_user(current_user.id)
     if logged_in?
+      # 変更
       @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
-# all?
+
       if params[:order_valid].present?
         @tasks = @tasks.order_valid
 
@@ -89,6 +80,11 @@ class TasksController < ApplicationController
   def set_label
     @label = Label.where(user_id: [nil, current_user.id])
   end
+  # def check_valid(tasks)
+  #   if tasks.present?
+  #     flash[:worning] = '終了期限間近、もしくは終了期限の切れたタスクがあります。'
+  #   end
+  # end
   def task_params
     params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
   end

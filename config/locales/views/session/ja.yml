@@ -1,8 +1,8 @@
 ja:
-  tasks:
+  sessions:
     index:
-      valid index: 期限切れ（間近）タスク一覧
-      title: タスク一覧
+      title: 期限切れ（間近）タスク一覧
+      index: 一覧へ戻る
       task_name: タスク名
       details: 詳細
       created_at: 作成日時
@@ -28,18 +28,3 @@ ja:
       editted: ユーザー情報を編集しました。
       task created: タスクを登録しました。
       task edited: タスクを編集しました。
-    form:
-      create new: 新規
-      Not started: 未着手
-      Already started: 着手中
-      done: 完了
-      select: 選択して下さい
-      low: 低
-      middle: 中
-      high: 高
-    show:
-      index: 一覧
-    new:
-      title: 新規登録
-      create labels: ラベル新規作成
-      # label_name: ラベル名
