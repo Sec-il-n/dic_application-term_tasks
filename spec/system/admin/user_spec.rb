@@ -11,8 +11,7 @@ RSpec.describe User, type: :system do
         fill_in "#{I18n.t('.dictionary.words.password')}", with: admin.password
         click_button "#{I18n.t('.dictionary.words.login')}"
         visit admin_users_path
-        # binding.pry
-        expect(find(:xpath, '/html/body/div/div/h1')).to have_content("#{I18n.t('.dictionary.words.admin')}")
+        expect(page).to have_content("#{I18n.t('.admin.users.index.title')}")
       end
     end
     context '一般ユーザが管理画面にアクセスした場合'do

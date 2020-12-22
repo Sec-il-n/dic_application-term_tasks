@@ -1,4 +1,6 @@
 <p class="text-danger bg-danger"><%= notice %></p>
+<p class="text-danger bg-danger"><%= danger %></p>
+<p class="text-warning bg-warning"><%= warning %></p>
 <h3><%= t('dictionary.words.task_name') %>:</h3>
 <%= @task.task_name %>
 <h3><%= t('dictionary.words.details') %>:</h3>
@@ -7,7 +9,6 @@
 <%= l @task.created_at, format: :long %><br>
 <h3><%= t('dictionary.words.valid_date') %>:</h3>
 <%= l @task.valid_date %><br>
-<%# <%= l @task.valid_date, format: :short_2 %><br>
 <h3><%= t('dictionary.words.status') %>:</h3>
 <%= @task.status %><br>
 <h3><%= t('dictionary.words.priority') %>:</h3>

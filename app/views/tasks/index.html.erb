@@ -1,17 +1,14 @@
 <p class="text-success bg-success"><%= notice %></p>
+<p class="text-danger bg-danger"><%= danger %></p>
+<p class="text-warning bg-warning"><%= warning %></p>
 <h1><%= t('.title') %></h1>
 <div class="row">
-<!-- <div class="search_form"> -->
   <%= form_with(url: tasks_path, local: true, method: 'get', class: 'form-horizontal') do |f| %>
-  <%# <%= form_with(url: tasks_path, local: true, method: 'get')do |f| %>
-    <!-- <ul class="row"> -->
     <div class="form-group col-md-6">
       <%= f.label t('.task_name'), :class => 'control-label form_item' %>
-      <%# <%= f.label t('.task_name') %>
       <%= f.text_field :task_name, :class => 'form-control' %>
     </div>
     <div class="form-group col-md-6">
-    <!-- <div class="form-group col-md-offset-1 col-md-6"> -->
       <%= f.label t('.status'), :class => 'control-label form_item' %>
       <%= f.select :status, [[t('.Not started'),'未着手'],[t('.Already started'),'着手中'],[t('.done'),'完了']], include_blank: t('.select'), :class => 'form-control' %>
       <%= f.label t('.label'), :class => 'control-label form_item' %>
@@ -22,7 +19,6 @@
         <%# <%= f.select :label_name, [label_name,], include_blank: t('.select'), :class => 'form-control' %>
       <%# <% end %>
       <%= f.submit t('.search'), :class => 'btn btn-primary btn-sm active' %>
-      <%# <%= f.submit t('.search') %>
     </div>
   <% end %>
 </div>
@@ -34,10 +30,8 @@
         <th><%= t('.task_name') %></th>
         <th><%= t('.details') %></th>
         <th><%= t('.created_at') %></th>
-        <!-- <th><%= t('.valid_date') %></th> -->
         <th><%= link_to t('.valid_date'), tasks_path(order_valid: 'valid_date'), class: 'btn btn-default btn-sm btn-sort' %></th>
         <th><%= t('.status') %></th>
-        <!-- <th><%= t('.priority') %></th> -->
         <th><%= link_to t('.priority'), tasks_path(order_priority: 'priority'), class: 'btn btn-default btn-sm btn-sort' %></th>
         <th colspan="6"></th>
       </tr>
@@ -47,7 +41,7 @@
       <tr id="sequence">
           <td id="task_name"><%= task.task_name %></td>
           <td><%= task.details %></td>
-          <td><%= l task.created_at, format: :long %></td>
+          <td id="created_at"><%= l task.created_at, format: :long %></td>
           <td id="valid_shown"><%= l task.valid_date %></td>
           <td id="status_shown"><%= task.status %></td>
           <td id="priority_shown"><%= task.priority %></td>

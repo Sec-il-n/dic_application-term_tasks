@@ -23,14 +23,10 @@ class TasksController < ApplicationController
     end
   end
   def index
-    # タグ検索　
-    # ＠user = current_user   view: @user.labels=> selectのLabel.allへ？？
-      # @tasks = @tasks.recent
-      # @tasks = Task.page(params[:page]).per(PAR).recent.tasks_of_user(current_user.id)
-      # ✖︎効かない　@tasks =　@tasks.tasks_of_user(current_user.id)
     if logged_in?
-      @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
-# all?
+      @tasks = current_user.tasks.page(params[:page]).per(PAR)
+      # @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
+
       if params[:order_valid].present?
         @tasks = @tasks.order_valid
 

@@ -1,5 +1,5 @@
 <p class="text-success bg-success"><%= notice %></p>
-<h1><%= t('dictionary.words.login') %></h1>
+<p class="text-danger bg-danger"><%= danger %></p>
 <%= form_with(scope: :session, local: true, url: sessions_path)do |f| %>
   <%= f.hidden_field :email %>
   <div class="form-group">
