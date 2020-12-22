@@ -24,16 +24,14 @@ User.create!(
   priority = [0, 1, 2].sample
   user_id = user.id
 
-  10.times do |n|
-    task = Task.create!(
-      task_name: task_name,
-      details: details,
-      valid_date: valid_date,
-      status: status,
-      priority: priority,
-      user_id: user_id
-    )
-  end
+  task = Task.create!(
+    task_name: task_name,
+    details: details,
+    valid_date: valid_date,
+    status: status,
+    priority: priority,
+    user_id: user_id
+  )
 
   label_name = "既成ラベル_#{n + 1}"
   label = Label.create!(label_name: label_name)
