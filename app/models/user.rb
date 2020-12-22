@@ -7,7 +7,6 @@ class User < ApplicationRecord
   before_destroy :cannot_destroy_last_admin
   has_many :tasks, dependent: :destroy
   has_many :labels, dependent: :destroy
-  # scope :group_admin, -> { where(admin: true) }
 
   private
   def admin_exists?

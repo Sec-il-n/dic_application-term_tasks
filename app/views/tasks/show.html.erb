@@ -1,6 +1,11 @@
-<p class="text-danger bg-danger"><%= notice %></p>
-<p class="text-danger bg-danger"><%= danger %></p>
-<p class="text-warning bg-warning"><%= warning %></p>
+<% if danger.present? %>
+  <p class="text-danger bg-danger"><%= danger %></p>
+<% elsif warning.present? %>
+  <p class="text-warning bg-warning"><%= warning %></p>
+<% else %>
+  <p class="text-danger bg-danger"><%= notice %></p>
+<% end %>
+
 <h3><%= t('dictionary.words.task_name') %>:</h3>
 <%= @task.task_name %>
 <h3><%= t('dictionary.words.details') %>:</h3>

@@ -15,14 +15,9 @@ class Task < ApplicationRecord
   scope :search_name_like, -> (name) { where('task_name LIKE ?', "%#{name}%") }
   scope :order_valid, -> { order(valid_date: :ASC) }
   scope :order_priority, -> { order(priority: :DESC ) }
-  # scope :tasks_of_user, -> (user_id) { where(user_id: user_id) }
+
   enum priority:['低' ,'中' ,'高']
   belongs_to :user
   has_many :managers, dependent: :destroy, foreign_key: 'task_id'
-  # has_many :labels, through: :managers, source: :label
-  #修正後
-  # has_many :labels, through: :managers, source: :task
   has_many :labels, through: :managers
-  # accepts_nested_attributes_for :managers
-  # accepts_nested_attributes_for :labels
 end

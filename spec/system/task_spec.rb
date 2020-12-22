@@ -13,6 +13,7 @@ RSpec.describe Task, type: :system do
         # step3で修正
         find('#task_status').find(:xpath, 'option[3]').select_option
         click_button '登録する'
+        binding.pry
         expect(page).to have_content('task_name')
         expect(page).to have_content('task_details')
         expect(page).to have_content('2022/12/18')
@@ -70,14 +71,19 @@ RSpec.describe Task, type: :system do
       end
       context 'タイトルとステータスで検索した場合' do
         let(:user) { build(:user_1, :use_task_4) }
+        let(:task_names) { all('#sequence #task_name') }
         it 'タイトルを含み指定したステータスのタスクの一覧が表示される' do
           login_as_user_with_association(user)
           visit tasks_path
-          fill_in :task_name, with: 'タスク6'
+          # fill_in :task_name, with: 'タスク6'
+          fill_in :task_name, with: 'タスク'
           find('#status').find(:xpath, 'option[1]').select_option
           click_button("#{I18n.t('.dictionary.words.search')}")
           # have_content は要素に指定できるが、eq be などは要素の文字列を取得する必要がある。
-          expect(find('#sequence #task_name').text).to eq('タスク6')
+          # expect(find('#sequence #task_name').text).to eq('タスク6')
+          task_names.each do |name|
+            expect(name).to have_content('タスク')
+          end
         end
       end
     end
@@ -112,7 +118,7 @@ RSpec.describe Task, type: :system do
     end
     describe '詳細表示機能' do
       let(:user) { build(:user_1, :use_task_6) }
-      let(:link_details) { first('#sequence .details') }
+      let(:link_details) { first('#sequence .link_shown') }
        context '任意のタスク詳細画面に遷移した場合' do
         it '該当タスクの内容が表示される' do
            login_as_user_with_association(user)

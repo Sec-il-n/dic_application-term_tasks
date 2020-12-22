@@ -1,22 +1,14 @@
 class TasksController < ApplicationController
   PAR = 10
   before_action :set_task, only:[:show, :edit, :update, :destroy]
-  # before_action :set_label, only:[:new, :edit]
   def new
-    # binding.pry
     @task = Task.new
-    # 追記 多対多で必要
     @task.managers.build
-    # .times.map{  必要　「現在のラベル数」buildしてblankは保存しない　　厳密：「受け取ったパラの回数」　　ただし「Label」
-    # @task.managers.label.build
-    # @task.managers.labels.build
-    # @task.labels.build
   end
   def create
-    # ✖︎　@task = Task.create(task_params)
     @task = Task.new(task_params)
     if @task.save
-      redirect_to task_path(@task.id),notice: %(タスクを登録しました。)
+      redirect_to task_path(@task.id), notice: %(タスクを登録しました。)
     else
       flash.now[:danger] = %(タスクの登録に失敗しました。)
       render :new
@@ -25,7 +17,6 @@ class TasksController < ApplicationController
   def index
     if logged_in?
       @tasks = current_user.tasks.page(params[:page]).per(PAR)
-      # @tasks = Task.page(params[:page]).per(PAR).tasks_of_user(current_user.id)
 
       if params[:order_valid].present?
         @tasks = @tasks.order_valid
@@ -43,8 +34,6 @@ class TasksController < ApplicationController
         @tasks = @tasks.order_priority
 
       elsif params[:label_id].present?
-        # managers task_id->label_id = label_id
-        # 再検証！！　where label_id in (,,,) == .where(id: [])=id: label_ids
         label = Label.find_by(id: params[:label_id])
         @tasks = label.managers.map { |m| m.task }
         @tasks = Kaminari.paginate_array(@tasks).page(params[:page]).per(PAR)
@@ -57,13 +46,10 @@ class TasksController < ApplicationController
     @label_ids = @task.managers.map { |man| man.label_id }
   end
   def edit
-    #追記
     @task.managers.build
-    # @label = Label.where(user_id: [nil, current_user.id])
   end
   def update
     if @task.update(task_params)
-      # redirect_to tasks_path, notice: "#{t('.tasks.update.tasks.index.task edited')}"
       redirect_to tasks_path, notice: %(タスクを編集しました。)
     else
       flash.now[:danger] = %(タスクの編集に失敗しました。)
