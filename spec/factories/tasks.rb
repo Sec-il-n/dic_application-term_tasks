@@ -9,10 +9,6 @@ FactoryBot.define do
     task_name { 'タスク' }
     details { 'テスト_詳細' }
   end
-  # factory :task_2, class: Task do
-  #   task_name { 'タスク2' }
-  #   details { 'テスト_詳細2' }
-  # end
 
   factory :task_3, class: Task do
     task_name { generate :task_name_sequence }
@@ -20,9 +16,7 @@ FactoryBot.define do
     created_at { Time.current }#
     status { "#{["未着手", "着手中", "完了"].sample}" }
     valid_date { generate :task_valid_sequence }
-    # 追記
     priority { "#{['高', '中', '低'].sample}" }
-    # priority { "#{[1, 2, 3].sample}" }
     association :user, factory: :user_1
   end
   factory :task_4, class: Task do
@@ -30,17 +24,12 @@ FactoryBot.define do
     details { 'テスト_詳細3' }
     valid_date { "#{Time.current.since(10.days)}"  }
     status { "#{["未着手", "着手中", "完了"].sample}" }
-    # valid_date { Time.current += 10 }
     association :user, factory: :user_1
   end
   factory :task_5, class: Task do
-    # task_name = [*'a'..'z'].shuffle[0..9]
-    # task_name = ('a'..'z').to_a.shuffle[0..9]
-    # task_name { "#{task_name}" }
     task_name { 'タスク' }
     details { 'テスト_詳細' }
     status { "#{["未着手", "着手中", "完了"].sample}" }
-    # valid_date { '002022-12-18'  }
     valid_date { generate :task_valid_sequence }
 
     association :user, factory: :user_1
@@ -51,7 +40,6 @@ FactoryBot.define do
     status { "#{I18n.t('.dictionary.words.Not started')}" }
     valid_date { '002022-12-18'  }
   end
-  # 現在使用中  3,5 テスト書き直しと、↓使用できるかを確認
   factory :task_7, class: Task do
     task_name { generate :task_name_sequence }
     details { 'テスト_詳細3' }
