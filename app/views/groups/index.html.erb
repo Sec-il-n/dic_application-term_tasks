@@ -1,0 +1,11 @@
+<p class="text-success bg-success"><%= notice %></p>
+<h1><%= t('groups.index.title') %></h1>
+<% @groups.each do |group| %>
+  <%= group.group_name %>
+  <%# <% if @user_groups.present? %>
+  <% if current_user.groups.find_by(id: group.id).present? %>
+    <%= link_to '離脱', user_group_path(group.id), method: 'delete' %>
+  <% else %>
+    <%= link_to '参加', user_groups_path(group_id: group.id), method: 'post' %>
+  <% end %>
+<% end %>

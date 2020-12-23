@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'users/index'
-  end
+  # namespace :admin do
+  #   get 'users/index'
+  # end
   root to: 'tasks#index'
   resources :tasks
   resources :users
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
   resources :sessions, only:[:new, :create, :destroy, :index]
+  resources :groups
+  resources :user_groups, only:[:create, :destroy]
   # resources :managers, only:[:index, :create, :destroy]
   namespace :admin do
     resources :users

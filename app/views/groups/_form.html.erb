@@ -1,0 +1,13 @@
+<div class="form-row">
+  <%= form_with(model: group, local: true)do |f| %>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      <%= f.label :group_name %>
+      <%= f.text_field :group_name %>
+    </div>
+    <div class="form-group">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

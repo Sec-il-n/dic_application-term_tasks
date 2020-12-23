@@ -4,6 +4,8 @@ ja:
       task: タスク
       user: ユーザー
       label: ラベル
+      group: グループ
+      user_group: 
     attributes:
       task:
         task_name: タスク名
@@ -23,20 +25,5 @@ ja:
         label_name: ラベル名
       label:
         label_name: ラベル名
-# ja:
-#   activerecord:
-#     attributes:
-#       property:
-#         name: 物件名
-#         price: 賃料
-#         address: 住所
-#         age: 築年数
-#         note: 備考
-#       property/stations:
-#         line: 路線名
-#         station_name: 駅名
-#         minute: 徒歩分数
-#       station:
-#         line: 路線名
-#         station_name: 駅名
-#         minute: 徒歩分数
+      group:
+        group_name: グループ名

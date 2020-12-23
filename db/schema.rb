@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_211623) do
+ActiveRecord::Schema.define(version: 2020_12_23_074139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string "group_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "admin_user_id", null: false
+  end
 
   create_table "labels", force: :cascade do |t|
     t.string "label_name"
@@ -43,6 +50,15 @@ ActiveRecord::Schema.define(version: 2020_12_12_211623) do
     t.bigint "user_id"
     t.index ["task_name"], name: "index_tasks_on_task_name"
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_user_groups_on_group_id"
+    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

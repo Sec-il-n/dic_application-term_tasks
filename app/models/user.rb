@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :labels, dependent: :destroy
   # scope :group_admin, -> { where(admin: true) }
+  has_many :user_groups, foreign_key: 'user_id'
+  has_many :groups, through: :user_groups
 
   private
   def admin_exists?

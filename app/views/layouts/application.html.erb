@@ -28,6 +28,12 @@
           <p class="text-danger bg-warning"><%= msg %></p>
         <% end %>
       <% end %>
+      <% if @group && @group.errors.any? %>
+        <p class="text-danger bg-danger"><%= @group.errors.count %> 件のエラーがあります。</p>
+        <% @group.errors.full_messages.each do |msg| %>
+          <p class="text-danger bg-warning"><%= msg %></p>
+        <% end %>
+      <% end %>
       <div class="container">
         <%= yield %>
       </div>
