@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>タスク名</th>
+      <!-- <th><%= t('.user_groups.index.task') %></th> -->
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.tasks.each do |task| %>
+      <tr>
+        <td><%= task.task_name %></td>
+        <td><%= link_to '詳細', task_path(task.id), class: 'btn btn-info button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

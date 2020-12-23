@@ -6,6 +6,8 @@ class UserGroupsController < ApplicationController
     # redirect_to groups_path, notice: t('.joined')
     # translation missing: ja.user_groups.create.joined
   end
+  def index
+  end
   def destroy
     binding.pry
     user_group = current_user.user_groups.find_by(group_id: params[:id]).destroy

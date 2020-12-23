@@ -6,14 +6,17 @@ ja:
       title: グループ新規作成
     index:
       title: グループ一覧
+      group_name: グループ名
       join: 参加する
       unoin: 離脱する
       joined: グループに参加しました。
+      new: グループ新規作成
     show:
       title: グループ詳細
       group_name: グループ名
       group_users: 参加ユーザー
-      # created: グループを作成しました。
+      tasks: タスク一覧
+      created: グループを作成しました。
     create:
       created: グループを作成しました。
       # user_groups.create/groups.index.joined

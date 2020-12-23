@@ -2,8 +2,5 @@ ja:
   user_groups:
     create:
       joined: グループに参加しました。
-      # index:
-      #   join: 参加する
-      # user_groups:
-      #   create:
-      #     joined: グループに参加しました。
+    index:
+      task: タスク名

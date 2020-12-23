@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :sessions, only:[:new, :create, :destroy, :index]
   resources :groups
-  resources :user_groups, only:[:create, :destroy]
+  resources :user_groups, only:[:create, :destroy, :index]
   # resources :managers, only:[:index, :create, :destroy]
   namespace :admin do
     resources :users

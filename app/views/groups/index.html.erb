@@ -1,11 +1,34 @@
 <p class="text-success bg-success"><%= notice %></p>
 <h1><%= t('groups.index.title') %></h1>
-<% @groups.each do |group| %>
-  <%= group.group_name %>
-  <%# <% if @user_groups.present? %>
-  <% if current_user.groups.find_by(id: group.id).present? %>
-    <%= link_to '離脱', user_group_path(group.id), method: 'delete' %>
-  <% else %>
-    <%= link_to '参加', user_groups_path(group_id: group.id), method: 'post' %>
-  <% end %>
-<% end %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t('groups.index.group_name') %></th>
+        <th></th>
+        <th></th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each do |group| %>
+        <tr>
+          <td><%= group.group_name %></td>
+          <% if current_user.groups.find_by(id: group.id).present? %>
+            <td><%= link_to '離脱', user_group_path(group.id), method: 'delete', class: 'btn btn-danger btn-sm' %></td>
+            <td><%= link_to '詳細', group_path(group.id), class: 'btn btn-info btn-sm' %></td>
+
+          <% else %>
+            <td><%= link_to '参加', user_groups_path(group_id: group.id), method: 'post', class: 'btn btn-success btn-sm' %></td>
+            <td></td>
+          <% end %>
+          <% if current_user.id == group.admin_user_id %>
+            <td><%= link_to '編集', edit_group_path(group.id), class: 'btn btn-warning btn-sm' %></td>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= link_to t('groups.index.new'), new_group_path %>
