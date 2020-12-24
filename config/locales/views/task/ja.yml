@@ -39,6 +39,7 @@ ja:
       high: 高
     show:
       index: 一覧
+      already read: 既読
     new:
       title: 新規登録
       create labels: ラベル新規作成

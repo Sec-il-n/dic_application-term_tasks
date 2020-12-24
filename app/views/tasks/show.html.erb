@@ -1,4 +1,7 @@
 <p class="text-danger bg-danger"><%= notice %></p>
+<% if @task.already_read == true %>
+  <h4 class="text-info bg-info"><%= t('tasks.show.already read') %></h4>
+<% end %>
 <h3><%= t('dictionary.words.task_name') %>:</h3>
 <%= @task.task_name %>
 <h3><%= t('dictionary.words.details') %>:</h3>

@@ -35,7 +35,7 @@ class GroupsController < ApplicationController
     # if @group.destroy && @group.user_groups.destroy_all
       redirect_to groups_path, notice: t('.group deleted')
     else
-      redirect_to groups_path, notice: t('.cannot delete')
+      redirect_to groups_path, danger: t('.cannot delete')
     end
   end
   private

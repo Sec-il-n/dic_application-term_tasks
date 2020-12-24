@@ -50,6 +50,9 @@ class TasksController < ApplicationController
   end
   def show
     @label_ids = @task.managers.map { |man| man.label_id }
+    if holder?(@task)
+      @task.update(already_read: true)
+    end
   end
   def edit
     #追記
@@ -86,6 +89,10 @@ class TasksController < ApplicationController
   #   end
   # end
   def task_params
-    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
+    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority, :already_read).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
+    # params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
+  end
+  def holder?(task)
+    current_user.id == task.user_id
   end
 end
