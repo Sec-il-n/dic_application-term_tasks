@@ -1,11 +1,13 @@
 <div class="form-row">
   <%= form_with(model: group, local: true)do |f| %>
     <div class="form-group">
-      <%= f.hidden_field :user_id, multiple: true %>
-    </div>
-    <div class="form-group">
       <%= f.label :group_name %>
       <%= f.text_field :group_name %>
+    </div>
+    <div class="form-group">
+      <%= f.fields_for :user_groups do |ff| %>
+        <%= ff.hidden_field :user_id, value: current_user.id %>
+      <% end %>
     </div>
     <div class="form-group">
       <%= f.submit :class => 'btn btn-primary' %>

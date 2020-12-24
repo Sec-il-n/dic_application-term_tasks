@@ -1,7 +1,6 @@
 class UserGroupsController < ApplicationController
   def create
     group_joined = current_user.user_groups.create(group_id: params[:group_id])
-    binding.pry
     redirect_to groups_path, notice: 'グループに参加しました。'
     # redirect_to groups_path, notice: t('.joined')
     # translation missing: ja.user_groups.create.joined

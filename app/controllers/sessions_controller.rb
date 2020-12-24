@@ -11,7 +11,6 @@ class SessionsController < ApplicationController
       # 追記
       # TasksControllerに同じ処理　→concernで呼び出す。
       @tasks = Task.tasks_of_user(session[:user_id]).serch_valid_tasks
-      binding.pry
       # 種類の違うflashを複数表示することはできない。
       warning = check_valid(@tasks)
       if warning.present?

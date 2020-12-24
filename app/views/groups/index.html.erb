@@ -1,4 +1,5 @@
 <p class="text-success bg-success"><%= notice %></p>
+<p class="text-danger bg-danger"><%= danger %></p>
 <h1><%= t('groups.index.title') %></h1>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -14,17 +15,19 @@
       <% @groups.each do |group| %>
         <tr>
           <td><%= group.group_name %></td>
-          <% if current_user.groups.find_by(id: group.id).present? %>
-            <td><%= link_to '離脱', user_group_path(group.id), method: 'delete', class: 'btn btn-danger btn-sm' %></td>
-            <td><%= link_to '詳細', group_path(group.id), class: 'btn btn-info btn-sm' %></td>
-
-          <% else %>
-            <td><%= link_to '参加', user_groups_path(group_id: group.id), method: 'post', class: 'btn btn-success btn-sm' %></td>
-            <td></td>
-          <% end %>
+          <%# concern 切り出し→そこから使用可能？　現：　check_admin?(group) %>
           <% if current_user.id == group.admin_user_id %>
             <td><%= link_to '編集', edit_group_path(group.id), class: 'btn btn-warning btn-sm' %></td>
-            <td></td>
+            <td><%= link_to '削除', group_path(group.id), class: 'btn btn-danger btn-sm', method: 'delete' %></td>
+          <% else %>
+            <% if current_user.groups.find_by(id: group.id).present? %>
+              <td><%= link_to '離脱', user_group_path(group.id), method: 'delete', class: 'btn btn-danger btn-sm' %></td>
+              <td><%= link_to '詳細', group_path(group.id), class: 'btn btn-info btn-sm' %></td>
+
+            <% else %>
+              <td><%= link_to '参加', user_groups_path(group_id: group.id), method: 'post', class: 'btn btn-success btn-sm' %></td>
+              <td></td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>

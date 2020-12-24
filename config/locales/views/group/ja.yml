@@ -11,12 +11,19 @@ ja:
       unoin: 離脱する
       joined: グループに参加しました。
       new: グループ新規作成
+      # cannot edit: 作成者以外、編集できません。
     show:
       title: グループ詳細
       group_name: グループ名
       group_users: 参加ユーザー
       tasks: タスク一覧
       created: グループを作成しました。
+      need loggedin: ログインしてください。
+    # この指定はアクション名不要
     create:
       created: グループを作成しました。
-      # user_groups.create/groups.index.joined
+    destroy:
+      group deleted: グループを削除しました。
+      cannot delete: グループを削除できません。
+    edit:
+      cannot edit: 作成者以外、編集できません。
