@@ -20,6 +20,15 @@ class LabelsController < ApplicationController
       end
     end
   end
+  def index
+    binding.pry
+    @labels = Label.where(user_id: current_user.id)
+    @default_labels = Label.where(user_id: nil)
+    @default_label_ids = @default_labels.pluck(:id)
+    # @default_label_ids = Label.where(user_id: nil).pluck(:id)
+    @managers = Manager.where(label_id:[@default_label_ids])
+
+  end
   def show
     @label = Label.find_by(id: params[:id])
   end

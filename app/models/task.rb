@@ -22,12 +22,16 @@ class Task < ApplicationRecord
   scope :serch_valid_tasks, -> { where("valid_date < ? or valid_date - 3 <= ?",today, today).where.not(status: '完了') }
   enum priority:['低' ,'中' ,'高']
 
+  def start_time
+    self.valid_date
+  end
+
   belongs_to :user
   has_many :managers, dependent: :destroy, foreign_key: 'task_id'
   # has_many :labels, through: :managers, source: :label
   #修正後
   # has_many :labels, through: :managers, source: :task
   has_many :labels, through: :managers
-  # accepts_nested_attributes_for :managers
-  # accepts_nested_attributes_for :labels
+  has_one_attached :file
+  # task.file.attach(params[:file])
 end

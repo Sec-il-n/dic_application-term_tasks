@@ -10,6 +10,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'rails-i18n', '~> 5.1'
 gem 'kaminari'
+gem 'simple_calendar', '~> 2.0'
+gem 'chartkick'
 gem 'bootstrap-sass'
 gem 'bcrypt'
 

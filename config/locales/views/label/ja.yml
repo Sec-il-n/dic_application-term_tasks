@@ -1,5 +1,8 @@
 ja:
   labels:
+    index:
+      label: ラベル名
+      use rate: 既成ラベル使用率
     new:
       create labels: ラベル新規作成
       index: 一覧へ戻る

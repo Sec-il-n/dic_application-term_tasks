@@ -37,9 +37,11 @@ ja:
       low: 低
       middle: 中
       high: 高
+      file: 添付ファイル
     show:
       index: 一覧
       already read: 既読
+      file: 添付ファイル
     new:
       title: 新規登録
       create labels: ラベル新規作成

@@ -56,16 +56,27 @@
           <td id="valid_shown"><%= l task.valid_date %></td>
           <td id="status_shown"><%= task.status %></td>
           <td id="priority_shown"><%= task.priority %></td>
-          <td><%= link_to t('.show'), task_path(task.id), class: 'btn btn-info button link_shown' %></td>
+          <td><%= link_to t('.show'), task_path(task.id, show: 'show'), class: 'btn btn-info button link_shown' %></td>
           <td><%= link_to t('.edit'), edit_task_path(task.id), class: 'btn btn-warning button link_edit' %></td>
           <td><%= link_to t('.delete'), task_path(task.id), method: :delete, class: 'btn btn-danger button' %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-  <%= paginate @tasks %><br>
-    <!-- btn-link -->
-  <%= link_to t('.create new'), new_task_path %> |
-  <%= link_to t('.sort by valid'), tasks_path(order_valid: 'valid_date') %> |
-  <%= link_to t('.sort by priority'), tasks_path(order_priority: 'priority') %>
+  <div class="row">
+    <%= paginate @tasks %><br>
+      <!-- btn-link -->
+    <%= link_to t('.create new'), new_task_path %> |
+    <%= link_to t('.sort by valid'), tasks_path(order_valid: 'valid_date') %> |
+    <%= link_to t('.sort by priority'), tasks_path(order_priority: 'priority') %>
+  </div><br>
+  <!-- <div class="row"> 表示が切れる-->
+  <div class="table-responsive">
+    <%= month_calendar events: @tasks do |date, tasks| %>
+      <%= date.day %>
+      <% tasks.each do |task| %>
+          <%= link_to task.task_name, task_path(task.id) %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

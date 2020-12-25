@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'tasks#index'
   resources :tasks
   resources :users
-  resources :labels, only:[:new, :create, :show] do
+  resources :labels, only:[:new, :create, :show, :index] do
     collection do
       post :confirm
     end

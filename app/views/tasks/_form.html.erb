@@ -1,13 +1,7 @@
 <div class="form row">
   <%= form_with(model:task, local: true, url: choose_path, class: 'form-horizontal')do |f|  %>
     <div class="form-group">
-      <%# 今のところ確認画面作らないので不要 %>
-      <%# <%= f.hidden_field :task_name %>
-      <%# <%= f.hidden_field :details %>
-      <%# <%= f.hidden_field :valid_date %>
-      <%# <%= f.hidden_field :status %>
-      <%# <%= f.hidden_field :priority %>
-      <%# <%= f.hidden_field :label_ids %>
+      <%# <%= f.hidden_field :file %>
     </div>
     <div class="form-group">
       <%= f.label :task_name %>
@@ -36,6 +30,11 @@
       <% label = Label.where(user_id: [nil, current_user.id]) %>
       <%= f.collection_check_boxes :label_ids, label, :id, :label_name, include_hidden: false %>
     </div>
+    <div class="form-group">
+      <%= f.label t('.file') %>
+      <%= f.file_field :file %>
+    </div>
+
     <div class="form-group">
       <%= f.submit :class => 'btn btn-primary' %>
     </div>

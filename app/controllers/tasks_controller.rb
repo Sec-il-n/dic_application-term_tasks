@@ -10,6 +10,8 @@ class TasksController < ApplicationController
   end
   def create
     @task = Task.new(task_params)
+    # 以下ありだと　再利用？DELETE?される
+    @task.file = params[:task][:file]
     if @task.save
       redirect_to task_path(@task.id),notice: %(タスクを登録しました。)
     else
@@ -50,8 +52,15 @@ class TasksController < ApplicationController
   end
   def show
     @label_ids = @task.managers.map { |man| man.label_id }
-    if holder?(@task)
+    if holder?(@task) && params[:show].present?
+    # if holder?(@task)
       @task.update(already_read: true)
+    end
+    if @task.file.attached?
+      @file_name = rails_blob_path(@task.file)
+      # file_name = rails_blob_path(@task.file)
+      # @url = File.extname(file_name).downcase
+      # => ""
     end
   end
   def edit
@@ -89,7 +98,8 @@ class TasksController < ApplicationController
   #   end
   # end
   def task_params
-    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority, :already_read).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
+    params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority, :already_read, :file).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
+    # params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority, :already_read).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
     # params.require(:task).permit(:task_name, :details, :valid_date, :status, :priority).merge(user_id: current_user.id, label_ids: params[:task][:label_ids])
   end
   def holder?(task)

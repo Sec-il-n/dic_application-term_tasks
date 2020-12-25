@@ -1,0 +1,21 @@
+<h3><%= t('.use rate') %></h3>
+<%= column_chart @default_labels.joins(:managers).group(:label_name).count %>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <!-- <th><%= t('.label') %></th> -->
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @labels.each do |label| %>
+    <tr>
+      <!-- <td><%= label.label_name %></td> -->
+      <!-- <td><%=  %></td> -->
+    </tr>
+    <% end %>
+  </tbody>
+</table>

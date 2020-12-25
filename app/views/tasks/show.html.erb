@@ -22,4 +22,9 @@
   <%= label_name = Label.find_by(id:label_id).label_name %>
   </p><br>
 <% end %>
+
+<h3><%= t('tasks.show.file') %>:</h3>
+<% if @task.file.attached? %>
+  <p><%= link_to @filename, rails_blob_path(@task.file) %></p>
+<% end %>
 <%= link_to t('.index'), tasks_path, class: 'btn btn-link' %>
