@@ -14,8 +14,11 @@ gem 'simple_calendar', '~> 2.0'
 gem 'chartkick'
 gem 'bootstrap-sass'
 gem 'bcrypt'
+
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
+gem 'fog-aws'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
