@@ -52,16 +52,18 @@ class TasksController < ApplicationController
   end
   def show
     @label_ids = @task.managers.map { |man| man.label_id }
-    if holder?(@task) && params[:show].present?
-    # if holder?(@task)
-      @task.update(already_read: true)
-    end
-    if @task.file.attached?
-      @file_name = rails_blob_path(@task.file)
-      # file_name = rails_blob_path(@task.file)
-      # @url = File.extname(file_name).downcase
-      # => ""
-    end
+    @task.update(already_read: true)if holder?(@task) && params[:show].present?
+    # if holder?(@task) && params[:show].present?
+    # # if holder?(@task)
+    #   @task.update(already_read: true)
+    # end
+    @file_name = rails_blob_path(@task.file)if @task.file.attached?
+    # if @task.file.attached?
+    #   @file_name = rails_blob_path(@task.file)
+    #   # file_name = rails_blob_path(@task.file)
+    #   # @url = File.extname(file_name).downcase
+    #   # => ""
+    # end
   end
   def edit
     #追記
