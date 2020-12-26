@@ -3,4 +3,7 @@
 <p id="show_user_name"><%= @user.user_name %></p>
 <h3><%= t('dictionary.words.email') %></h3>
 <p id="show_email"><%= @user.email %>
-</p>
+<h3><%= t('users.show.image') %></h3>
+<% if @user && @user.image.present? %>
+  <p id="show_image"><%= image_tag @user.image.url %></p>
+<% end %>

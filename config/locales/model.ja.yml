@@ -5,7 +5,7 @@ ja:
       user: ユーザー
       label: ラベル
       group: グループ
-      user_group: 
+      user_group:
     attributes:
       task:
         task_name: タスク名
@@ -20,6 +20,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         admin: 管理者権限
+        image: サムネイル
       manager:
       manager/labels:
         label_name: ラベル名

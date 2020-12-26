@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # scope :group_admin, -> { where(admin: true) }
   has_many :user_groups, foreign_key: 'user_id'
   has_many :groups, through: :user_groups
-
+  mount_uploader :image, ImageUploader
   private
   def admin_exists?
     User.where(admin: true).count == 1

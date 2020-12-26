@@ -14,6 +14,9 @@ class SessionsController < ApplicationController
       # 種類の違うflashを複数表示することはできない。
       warning = check_valid(@tasks)
       if warning.present?
+        # option:期限直近メール
+        binding.pry
+        ValidAnnounceMailer.valid_announce_mail(current_user).deliver
         # 一旦遷移
         redirect_to tasks_path, warning: t('dictionary.words.logged in') + warning
       else
