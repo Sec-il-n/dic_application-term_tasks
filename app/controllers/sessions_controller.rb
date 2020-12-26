@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
       warning = check_valid(@tasks)
       if warning.present?
         # option:期限直近メール
-        binding.pry
         ValidAnnounceMailer.valid_announce_mail(current_user).deliver
         # 一旦遷移
         redirect_to tasks_path, warning: t('dictionary.words.logged in') + warning
@@ -40,7 +39,6 @@ class SessionsController < ApplicationController
   def check_valid(tasks)
     if tasks.present?
       '終了期限間近、もしくは終了期限の切れたタスクがあります。'
-      # flash[:worning] = '終了期限間近、もしくは終了期限の切れたタスクがあります。'
     end
   end
 end
