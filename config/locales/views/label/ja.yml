@@ -1,0 +1,14 @@
+ja:
+  labels:
+    new:
+      create labels: ラベル新規作成
+      index: 一覧へ戻る
+      not created: ラベル作成に失敗しました。
+    confirm:
+      confirmation: 以下の名前で登録します。
+      back: 戻る
+    create:
+      label created: ラベルを作成しました。
+    show:
+      index: 一覧
+      label name: ラベル名

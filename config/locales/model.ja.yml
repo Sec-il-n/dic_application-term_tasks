@@ -3,6 +3,7 @@ ja:
     models:
       task: タスク
       user: ユーザー
+      label: ラベル
     attributes:
       task:
         task_name: タスク名
@@ -17,3 +18,8 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         admin: 管理者権限
+      manager:
+      manager/labels:
+        label_name: ラベル名
+      label:
+        label_name: ラベル名

@@ -11,6 +11,13 @@
     <div class="form-group col-md-6">
       <%= f.label t('.status'), :class => 'control-label form_item' %>
       <%= f.select :status, [[t('.Not started'),'未着手'],[t('.Already started'),'着手中'],[t('.done'),'完了']], include_blank: t('.select'), :class => 'form-control' %>
+      <%= f.label t('.label'), :class => 'control-label form_item' %>
+      <%# Label.all userのみ %>
+      <%= f.collection_select :label_id, Label.all, :id, :label_name, include_blank: true %>
+      <%# <%= f.collection_select :label_name, Label.all, :id, :label_name, include_blank: true %>
+      <%# <% Label.all.map{|l| l.label_name}.each do |label_name| %>
+        <%# <%= f.select :label_name, [label_name,], include_blank: t('.select'), :class => 'form-control' %>
+      <%# <% end %>
       <%= f.submit t('.search'), :class => 'btn btn-primary btn-sm active' %>
     </div>
   <% end %>
@@ -38,8 +45,8 @@
           <td id="valid_shown"><%= l task.valid_date %></td>
           <td id="status_shown"><%= task.status %></td>
           <td id="priority_shown"><%= task.priority %></td>
-          <td><%= link_to t('.show'), task_path(task.id), class: 'btn btn-info button details' %></td>
-          <td><%= link_to t('.edit'), edit_task_path(task.id), class: 'btn btn-warning button' %></td>
+          <td><%= link_to t('.show'), task_path(task.id), class: 'btn btn-info button link_shown' %></td>
+          <td><%= link_to t('.edit'), edit_task_path(task.id), class: 'btn btn-warning button link_edit' %></td>
           <td><%= link_to t('.delete'), task_path(task.id), method: :delete, class: 'btn btn-danger button' %></td>
       </tr>
       <% end %>

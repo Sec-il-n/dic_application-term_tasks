@@ -12,6 +12,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'bcrypt'
+gem 'faker'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
@@ -24,7 +25,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'launchy'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-nav'

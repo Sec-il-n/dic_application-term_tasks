@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_secure_password
   before_destroy :cannot_destroy_last_admin
   has_many :tasks, dependent: :destroy
+  has_many :labels, dependent: :destroy
 
   private
   def admin_exists?

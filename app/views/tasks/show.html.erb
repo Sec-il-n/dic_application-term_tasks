@@ -1,6 +1,11 @@
-<p class="text-danger bg-danger"><%= notice %></p>
-<p class="text-danger bg-danger"><%= danger %></p>
-<p class="text-warning bg-warning"><%= warning %></p>
+<% if danger.present? %>
+  <p class="text-danger bg-danger"><%= danger %></p>
+<% elsif warning.present? %>
+  <p class="text-warning bg-warning"><%= warning %></p>
+<% else %>
+  <p class="text-danger bg-danger"><%= notice %></p>
+<% end %>
+
 <h3><%= t('dictionary.words.task_name') %>:</h3>
 <%= @task.task_name %>
 <h3><%= t('dictionary.words.details') %>:</h3>
@@ -13,4 +18,11 @@
 <%= @task.status %><br>
 <h3><%= t('dictionary.words.priority') %>:</h3>
 <%= @task.priority %><br>
+
+<h3><%= t('dictionary.words.labels') %>:</h3>
+<% @label_ids.each do |label_id| %>
+  <p id="labels">
+  <%= label_name = Label.find_by(id:label_id).label_name %>
+  </p><br>
+<% end %>
 <%= link_to t('.index'), tasks_path, class: 'btn btn-link' %>

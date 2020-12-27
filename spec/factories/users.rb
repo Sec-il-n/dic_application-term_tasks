@@ -4,6 +4,11 @@ FactoryBot.define do
     email { "MyString@hoge.com" }
     password { "MyString" }
     password_confirmation { "MyString" }
+    admin { false }
+
+    after(:create) do |user|
+      create_list(:label, 3, user_id: user.id)
+    end
   end
   factory :user_1, class: User do
     user_name { "MyString" }

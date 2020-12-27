@@ -7,6 +7,7 @@ ja:
       created_at: 作成日時
       valid_date: 終了期限
       status: ステータス
+      label: ラベル
       show: 詳細
       edit: 編集
       delete: 削除
@@ -24,6 +25,8 @@ ja:
       sort by priority: 優先順位でソートする
       need loggedin: ログインして下さい。
       editted: ユーザー情報を編集しました。
+      task created: タスクを登録しました。
+      task edited: タスクを編集しました。
     form:
       create new: 新規
       Not started: 未着手
@@ -35,3 +38,8 @@ ja:
       high: 高
     show:
       index: 一覧
+    new:
+      title: 新規登録
+      create labels: ラベル新規作成
+      # label_name: ラベル名
+        

@@ -12,6 +12,7 @@ ja:
       created_at: 作成日時
       valid_date: 終了期限
       status: ステータス
+      labels: ラベル
       search: 検索
       Not started: 未着手
       Already started: 着手中

@@ -1,4 +1,4 @@
-<p class="text-success bg-success"><%= notice %></p>
-<p class="text-danger bg-danger"><%= danger %></p>
-<h1>新規登録</h1>
-<%= render 'form', task:@task %>
+<p class="text-danger bg-danger"><%= notice %></p>
+<h1><%= "#{t('.title')}" %></h1>
+<%= render 'form', task: @task %>
+<%= link_to t('.create labels'), new_label_path %>
